@@ -5,7 +5,7 @@ class SheetMusicsController < ApplicationController
         if @sheet_music.save
             render json: @sheet_music, status: :created
         else
-            render json: @sheet_music.errors, status :unprocessably
+            render json: @sheet_music.errors, status: :unprocessable_entity
         end
     end
 
@@ -19,7 +19,7 @@ class SheetMusicsController < ApplicationController
         if @sheet_music.update(sheet_music_params)
             render json: @sheet_music
         else
-            render json: @sheet_music.errors, status: unprocessably
+            render json: @sheet_music.errors, status: :unprocessable_entity
         end
     end
 

@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :sheet_music, only: [:create, :show, :update, :destroy]
+  resources :sheet_musics, only: [:create, :show, :update, :destroy]
 end

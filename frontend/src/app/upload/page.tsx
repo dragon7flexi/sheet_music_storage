@@ -1,3 +1,5 @@
+'use client'
+
 import axios from "axios";
 import { useState } from "react"
 
@@ -8,17 +10,19 @@ const Upload = () => {
         setFile(e.target.files ? e.target.files[0] : null);
     };
 
-    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!file) {
             return;
         }
 
         const formData = new FormData();
-        formData.append('pdf', file);
+        formData.append('sheet_music[title]', 'Sample Title'); // Example title
+        formData.append('sheet_music[description]', 'Sample Description'); // Example description
+        formData.append('sheet_music[pdf]', file);
 
         try {
-            await axios.post('https://localhost:3000/sheet_music', formData, {
+            await axios.post('http://localhost:3001/sheet_musics', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
